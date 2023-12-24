@@ -14,7 +14,7 @@ const { NotImplementedError } = require('../extensions/index.js');
  */
 class Stack {
   constructor() {
-    this.dataStore = [];
+    this.dataStore = {};
     this.size = 0;
   }
 
