@@ -24,25 +24,21 @@ class Queue {
   }
 
   enqueue(value) {
-    if (!this.tail) {
-      this.head = new ListNode(value);
-      this.tail = this.head;
-      this.next = null;
-    } else {
-      let prevTail = this.tail;
-      this.tail = new ListNode(value);
-      prevTail.next = this.tail;
+    const listNode = new ListNode(value);
+    if (!this.head && !this.tail) {
+      this.head = listNode;
+      this.tail = listNode;
     }
+    this.tail.next = listNode;
+    this.tail = listNode;
   }
 
   dequeue() {
-    if (!this.head) {
-      return null;
-    } else {
-      const deleteItem = this.head;
-      this.head = this.head.next;
-      return deleteItem;
-    }
+    if (!this.head) return null;
+    const value = this.head.value;
+    this.head = this.head.next;
+    if (!this.head) this.tail = null;
+    return value;
   }
 }
 
